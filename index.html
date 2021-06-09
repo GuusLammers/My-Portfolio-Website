@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,700&family=Space+Mono&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      body {
+        margin: 0;
+        -webkit-font-smoothing: anitaliased;
+      }
+
+      .font-exo {
+        font-family: 'Exo 2', sans-serif;
+      }
+
+      .font-space-mono {
+        font-family: 'Space Mono', monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div 
+        class="absolute text-white text-center" 
+        style="top: 50%; transform: translate(-50%, -50%); left: 50%;"
+        >
+        <h1 class="font-space-mono text-sm uppercase tracking-widest">Guus Lammers</h1>
+        <p class="font-exo text-3xl">
+          A hero is not the one who never falls. He is the one that who gets up, again and again, never losing sight of his dreams
+        </p>
+        <button class="border px-4 py-2 rounded-lg text-sm font-space-mono uppercase mt-8 hover:bg-white hover:text-gray-800 tracking-widest inline-block">View Work</button>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

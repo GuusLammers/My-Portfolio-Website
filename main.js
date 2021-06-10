@@ -1,8 +1,10 @@
 import * as THREE from 'three';
 import * as dat from 'dat.gui';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import gsap from 'gsap'
+import { gsap } from 'gsap'
+import { CustomEase } from "gsap/CustomEase"
 
+gsap.registerPlugin(CustomEase)
 
 // gui
 //const gui = new dat.GUI()
@@ -34,6 +36,7 @@ gui.add(world.plane, 'gHover', 0, 1)
 gui.add(world.plane, 'bHover', 0, 1)
 */
 
+// functions
 function generatePlane() {
 	planeMesh.geometry.dispose()
 	planeMesh.geometry = new THREE.PlaneGeometry(world.plane.width, world.plane.height, world.plane.widthSegments, world.plane.heightSegments)
@@ -80,6 +83,18 @@ const cameraOriginalXRotation = -0.2
 camera.position.y = 1
 camera.position.z = 5
 camera.rotation.x = cameraOriginalXRotation
+
+const cameraTransitionPositionOne = {
+	x: 0,
+	y: -1,
+	z: 10
+}
+
+const cameraTransitionPositionTwo = {
+	x: 0,
+	y: 500,
+	z: -2000
+}
 
 
 // renderer
@@ -148,7 +163,6 @@ light.position.set(0, 2, -0.75)
 
 const sphereLight = new THREE.DirectionalLight(0xFFFFFF, 0.2)
 sphereLight.target = sphereMesh
-console.log(sphereLight)
 
 // objects added to scene
 scene.add(planeMesh)
@@ -163,7 +177,14 @@ const mouse = {
 	y: 0
 }
 
+const textFade = {
+	opacity: 1
+}
+
 let frame = 0
+let transition = false
+let transitionOneDone = false
+let redirected = false
 // animate
 function animate() {
 	requestAnimationFrame(animate)
@@ -239,15 +260,62 @@ function animate() {
 	}
 
 	// camera animation
-	gsap.to(camera.rotation, {
+	if (!transition) {
+		gsap.to(camera.rotation, {
 		x: cameraOriginalXRotation + mouse.y * 0.5,
 		y: -mouse.x * 0.075,
 		duration: 4
-	})
+		})
+	}
 
 	// sphere animation
 	sphereMesh.rotation.y += 0.0025
 
+	// transition animation
+	if (transition) {
+		
+		gsap.to(camera.position, {
+			duration: 2,
+			y: cameraTransitionPositionOne.y,
+			z: cameraTransitionPositionOne.z,
+			onComplete: () => {
+				transitionOneDone = true
+			}
+		})
+
+		gsap.to(camera.rotation, {
+			duration: 2,
+			x: 0.25,
+			y: 0,
+			z: 0
+		})
+
+		if (transitionOneDone) {
+			gsap.to(camera.position, {
+				duration: 1.5,
+				ease: 'power4.out',
+				y: cameraTransitionPositionTwo.y,
+				z: cameraTransitionPositionTwo.z,
+				onComplete: () => {
+					if (!redirected) {
+						window.location.href = "http://localhost:3000/"
+						redirected = true
+					}
+				}
+			})
+
+			// text fade animation
+			var el = document.getElementById('mainContainer')
+			
+			gsap.to(textFade, {
+				duration: 1,
+				opacity: 0,
+				onUpdate: () => {
+					el.style.opacity = textFade.opacity
+				}
+			})
+		}
+	}
 }
 
 animate()
@@ -278,4 +346,6 @@ window.addEventListener('resize', () => {
 	renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
-
+document.getElementById('transitionBtn').addEventListener('click', function() {
+	transition = true
+})

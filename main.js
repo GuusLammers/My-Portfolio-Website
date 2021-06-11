@@ -168,8 +168,8 @@ sphereLight.target = sphereMesh
 scene.add(planeMesh)
 scene.add(light)
 scene.add(stars)
-scene.add(sphereMesh)
-scene.add(sphereLight)
+//scene.add(sphereMesh)
+//scene.add(sphereLight)
 
 // mouse position
 const mouse = {

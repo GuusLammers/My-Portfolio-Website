@@ -11,6 +11,9 @@
   "dependencies": {
     "dat.gui": "^0.7.7",
     "gsap": "file:gsap-bonus.tgz",
+    "i": "^0.3.7",
+    "npm": "^8.19.1",
+    "or": "^0.2.0",
     "three": "^0.129.0"
   }
 }

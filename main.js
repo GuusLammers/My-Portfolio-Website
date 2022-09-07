@@ -1,13 +1,6 @@
 import * as THREE from 'three';
-import * as dat from 'dat.gui';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { gsap } from 'gsap'
-import { CustomEase } from "gsap/CustomEase"
 
-gsap.registerPlugin(CustomEase)
-
-// gui
-//const gui = new dat.GUI()
 const world = {
 	plane: {
 		width: 150,
@@ -22,19 +15,6 @@ const world = {
 		bHover: 1
 	}
 }
-
-/*
-gui.add(world.plane, 'width', 1, 150).onChange(generatePlane)
-gui.add(world.plane, 'height', 1, 100).onChange(generatePlane)
-gui.add(world.plane, 'widthSegments', 5, 100).onChange(generatePlane)
-gui.add(world.plane, 'heightSegments', 5, 100).onChange(generatePlane)
-gui.add(world.plane, 'r', 0, 1).onChange(generatePlane)
-gui.add(world.plane, 'g', 0, 1).onChange(generatePlane)
-gui.add(world.plane, 'b', 0, 1).onChange(generatePlane)
-gui.add(world.plane, 'rHover', 0, 1)
-gui.add(world.plane, 'gHover', 0, 1)
-gui.add(world.plane, 'bHover', 0, 1)
-*/
 
 // functions
 function generatePlane() {
@@ -78,37 +58,17 @@ const scene = new THREE.Scene();
 const raycaster = new THREE.Raycaster()
 
 // camera
-const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000)
-const cameraOriginalXRotation = -0.2
-camera.position.y = 1
-camera.position.z = 5
-camera.rotation.x = cameraOriginalXRotation
+const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
+const cameraOriginalXRotation = -0.2;
+camera.position.y = 1;
+camera.position.z = 5;
+camera.rotation.x = cameraOriginalXRotation;
 
-const cameraTransitionPositionOne = {
-	x: 0,
-	y: -1,
+const cameraTransitionPosition = {
+	rotX: 0,
+	y: 10,
 	z: 10
-}
-
-const cameraTransitionPositionTwo = {
-	x: 0,
-	y: 500,
-	z: -2000
-}
-
-
-// renderer
-const renderer = new THREE.WebGLRenderer(
-{
-	antialias: true
-})
-renderer.setSize(innerWidth, innerHeight)
-renderer.setPixelRatio(devicePixelRatio)
-renderer.antialias = true
-document.body.appendChild(renderer.domElement)
-
-// orbit controls
-//new OrbitControls(camera, renderer.domElement)
+};
 
 // geometries
 const planeGeometry = new THREE.PlaneGeometry(100, 50, 60, 30)
@@ -125,8 +85,6 @@ for (var i = 0; i < 10000; i++) {
 
 starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(startVertices, 3))
 
-const sphereGeometry = new THREE.SphereGeometry(15, 25, 25)
-
 // materials
 const planeMaterial = new THREE.MeshStandardMaterial(
 	{
@@ -141,10 +99,6 @@ const starMaterial = new THREE.PointsMaterial({
 	color: 0xFFFFFF
 })
 
-const sphereMaterial = new THREE.MeshStandardMaterial({
-	map: new THREE.TextureLoader().load('./statics/moon.jpg')
-})
-
 // points
 const stars = new THREE.Points(starGeometry, starMaterial)
 
@@ -153,23 +107,14 @@ const planeMesh = new THREE.Mesh(planeGeometry, planeMaterial)
 planeMesh.rotateX(-1.5)
 generatePlane()
 
-const sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial)
-sphereMesh.position.y = 75
-sphereMesh.position.z = -100
-
 // lights
 const light =  new THREE.DirectionalLight(0xFFFFFF, 0.5)
 light.position.set(0, 2, -0.75)
-
-const sphereLight = new THREE.DirectionalLight(0xFFFFFF, 0.2)
-sphereLight.target = sphereMesh
 
 // objects added to scene
 scene.add(planeMesh)
 scene.add(light)
 scene.add(stars)
-//scene.add(sphereMesh)
-//scene.add(sphereLight)
 
 // mouse position
 const mouse = {
@@ -181,6 +126,16 @@ const textFade = {
 	opacity: 1
 }
 
+// renderer
+const renderer = new THREE.WebGLRenderer(
+	{
+		antialias: true
+	});
+	renderer.setSize(innerWidth, innerHeight);
+	renderer.setPixelRatio(devicePixelRatio);
+	renderer.antialias = true;
+	document.body.appendChild(renderer.domElement);
+
 let frame = 0
 let transition = false
 let transitionOneDone = false
@@ -191,7 +146,6 @@ function animate() {
 	renderer.render(scene, camera)
 	raycaster.setFromCamera(mouse, camera)
 	frame += 0.01
-
 
 	// plane animation
 	const {array, originalPosition, randomValues} = planeMesh.geometry.attributes.position
@@ -268,57 +222,40 @@ function animate() {
 		})
 	}
 
-	// sphere animation
-	sphereMesh.rotation.y += 0.0025
-
 	// transition animation
 	if (transition) {
 		
+		// translation animation
 		gsap.to(camera.position, {
 			duration: 2,
-			y: cameraTransitionPositionOne.y,
-			z: cameraTransitionPositionOne.z,
+			y: cameraTransitionPosition.y,
+			z: cameraTransitionPosition.z,
 			onComplete: () => {
 				transitionOneDone = true
 			}
 		})
 
+		// rotation animation
 		gsap.to(camera.rotation, {
 			duration: 2,
-			x: 0.25,
+			x: -1.2,
 			y: 0,
 			z: 0
 		})
 
-		if (transitionOneDone) {
-			gsap.to(camera.position, {
-				duration: 1.5,
-				ease: 'power4.out',
-				y: cameraTransitionPositionTwo.y,
-				z: cameraTransitionPositionTwo.z,
-				onComplete: () => {
-					if (!redirected) {
-						window.location.href = "http://localhost:3000/"
-						redirected = true
-					}
-				}
-			})
-
-			// text fade animation
-			var el = document.getElementById('mainContainer')
-			
-			gsap.to(textFade, {
-				duration: 1,
-				opacity: 0,
-				onUpdate: () => {
-					el.style.opacity = textFade.opacity
-				}
-			})
-		}
+		// text fade animation
+		var el = document.getElementById('skyViewContainer')			
+		gsap.to(textFade, {
+			duration: 1,
+			opacity: 0,
+			onUpdate: () => {
+				el.style.opacity = textFade.opacity
+			}
+		})
 	}
 }
 
-animate()
+animate();
 
 // event listeners
 addEventListener('mousemove', (event) => {

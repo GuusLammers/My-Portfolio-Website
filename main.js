@@ -122,9 +122,13 @@ const mouse = {
 	y: 0
 }
 
-const textFade = {
+const textFadeIn = {
+	opacity: 0
+};
+
+const textFadeOut = {
 	opacity: 1
-}
+};
 
 // renderer
 const renderer = new THREE.WebGLRenderer(
@@ -231,7 +235,7 @@ function animate() {
 			y: cameraTransitionPosition.y,
 			z: cameraTransitionPosition.z,
 			onComplete: () => {
-				transitionOneDone = true
+				transition = true
 			}
 		})
 
@@ -245,11 +249,23 @@ function animate() {
 
 		// text fade animation
 		var el = document.getElementById('skyViewContainer')			
-		gsap.to(textFade, {
+		gsap.to(textFadeOut, {
 			duration: 1,
 			opacity: 0,
 			onUpdate: () => {
-				el.style.opacity = textFade.opacity
+				el.style.opacity = textFadeOut.opacity;
+			},
+			onComplete: () => {
+				el.style.display = "none";
+				el = document.getElementById('planeContainer');
+				el.style.display = "block";
+				gsap.to(textFadeIn, {
+					duration: 1,
+					opacity: 1,
+					onUpdate: () => {
+						el.style.opacity = textFadeIn.opacity;
+					}
+				})
 			}
 		})
 	}

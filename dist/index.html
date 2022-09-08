@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guus Lammers</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,700&family=Space+Mono&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+    
+    <style>
+      body {
+        margin: 0;
+        -webkit-font-smoothing: anitaliased;
+      }
+
+      .font-exo {
+        font-family: 'Exo 2', sans-serif;
+      }
+
+      .font-space-mono {
+        font-family: 'Space Mono', monospace;
+      }
+
+      .opacity {
+        opacity: 1;
+      }
+    </style>
+  <script type="module" crossorigin src="/assets/index.29a090e4.js"></script>
+  <link rel="modulepreload" href="/assets/vendor.a20d0e46.js">
+</head>
+  <body>
+    <div id="app">
+
+      <div 
+        class="absolute text-white text-center"
+        id="skyViewContainer" 
+        style="top: 50%; transform: translate(-50%, -50%); left: 50%;">
+        <h1 class="font-space-mono text-sm uppercase tracking-widest">Guus Lammers</h1>
+        <p class="font-exo text-3xl">
+          A hero is not the one who never falls. A hero is the one that gets up, again and again, 
+          never losing sight of their dreams - Rock Lee
+        </p>
+        <button class="border px-4 py-2 rounded-lg text-sm font-space-mono uppercase mt-8 hover:bg-white hover:text-gray-800 tracking-widest inline-block" id="transitionBtn">View Work</button>
+      </div>
+
+      <div
+        class="absolute text-white text-center"
+        id="planeContainer" 
+        style="top: 50%; transform: translate(-50%, -50%); left: 50%; display: none; opacity: 0;">
+        
+        <div class="border px-4 py-2 rounded-lg">
+          <h1 class="font-space-mono text-xl uppercase tracking-widest">Social Media</h1>
+          <a href="https://www.linkedin.com/in/guuslammers/" target="_blank"><i class="fab fa-linkedin px-1" style="font-size:30px" title="LinkedIn"></i></a>
+          <a href="https://github.com/GuusLammers" target="_blank"><i class="fab fa-github px-1" style="font-size:30px" title="GitHub"></i></a>
+          <a href="https://drive.google.com/file/d/13Vg6W0C8OEjHhkXiWVyfD9VePwOpAS7t/view?usp=sharing" target="_blank"><i class="fa fa-file px-1" style="font-size:30px" title="Resume"></i></a>
+        </div>
+
+        <div class="py-1"></div>
+
+        <div>
+          <h1 class="font-space-mono text-3xl uppercase tracking-widest border px-4 py-2 rounded-lg">Personal Projects</h1>
+        </div>
+        
+        <div class="overflow-y-auto h-96">
+          
+          <div class="py-1"></div>
+          
+          <div id="project1" class="border px-4 py-2 rounded-lg">
+            <h1 class="font-space-mono text-xl uppercase tracking-widest">My Portfolio Website</h1>
+            <h1 class="font-space-mono text-md uppercase tracking-widest">Developed Using JavaScript</h1>
+            <p class="font-space-mono text-sm">
+              A SPA built using Vanilla JavaScript and Three.js to display my personal programming projects. 
+              Working on this project allowed me to refine my skills using JavaScript, Three.js, HTML, and CSS.
+              This portfolio is being hosted using GitHub Pages.
+            </p>
+            <a href="https://github.com/GuusLammers/My-Portfolio-Website" target="_blank"><i class="fab fa-github py-0.5" style="font-size:30px" title="Repository"></i></a>
+          </div>
+
+          <div class="py-1"></div>
+          
+          <div id="project1" class="border px-4 py-2 rounded-lg">
+            <h1 class="font-space-mono text-xl uppercase tracking-widest">Evolutionary Algorithm Visualizer</h1>
+            <h1 class="font-space-mono text-md uppercase tracking-widest">Developed Using Java</h1>
+            <p class="font-space-mono text-sm">
+              An interactive tool used to visualize an evolutionary algorithm implemented using the MVC design pattern.
+              Working on this project allowed me to refine my skills using OOP, the MVC design pattern, and Java Swing components 
+              and event systems. By implementing this project using the MVC design pattern, I was able to decouple the view from the model, 
+              improving the code's organization and readability. This project also improved my knowledge of how evolutionary algorithms work.
+            </p>
+            <a href="https://github.com/GuusLammers/Evolutionary-Algorithm-Visualizer" target="_blank"><i class="fab fa-github py-0.5" style="font-size:30px" title="Repository"></i></a>
+          </div>
+
+          <div class="py-1"></div>
+
+          <div id="project1" class="border px-4 py-2 rounded-lg">
+            <h1 class="font-space-mono text-xl uppercase tracking-widest">Sorting Algorithm Visualizer</h1>
+            <h1 class="font-space-mono text-md uppercase tracking-widest">Developed Using Python</h1>
+            <p class="font-space-mono text-sm">
+              A sorting algorithm visualizer implemented using Tkinter and the MVC design pattern using a 
+              custom events system. The visualizer implements visualizations for selection sort, merge sort,
+              quick sort, insertion sort, and cocktail sort. Working on this project allowed me to refine my 
+              skills using Tkinter, OOP, the MVC design pattern, and gave me the opportunity to create and implement
+              my own custom event system.
+            </p>
+            <a href="https://github.com/GuusLammers/Sorting-Algorithm-Visualizer" target="_blank"><i class="fab fa-github py-0.5" style="font-size:30px" title="Repository"></i></a>
+          </div>
+
+          <div class="py-1"></div>
+
+          <div id="project1" class="border px-4 py-2 rounded-lg">
+            <h1 class="font-space-mono text-xl uppercase tracking-widest">Path Finder</h1>
+            <h1 class="font-space-mono text-md uppercase tracking-widest">Developed Using Python</h1>
+            <p class="font-space-mono text-sm">
+              An interactive visualization tool that visually compares path-finding algorithms. This tool 
+              allows the user to create the visualization setup by placing the start position, end position, and any 
+              obstacles. The visualizer implements visulizations for Dijkstra's, A*, and Best First Search path finding
+              algorithms. Working on this project refined my knowledge of the underlying mechanics of path finding algorithms 
+              and the effects heuristics can have on the algorithms efficiency.
+            </p>
+            <a href="https://github.com/GuusLammers/Pathfinder" target="_blank"><i class="fab fa-github py-0.5" style="font-size:30px" title="Repository"></i></a>
+          </div>
+
+          <div class="py-1"></div>
+
+          <div id="project1" class="border px-4 py-2 rounded-lg">
+            <h1 class="font-space-mono text-xl uppercase tracking-widest">Cimex Bug Tracker</h1>
+            <h1 class="font-space-mono text-md uppercase tracking-widest">Developed Using Python Flask, JavaScript, HTML, CSS</h1>
+            <p class="font-space-mono text-sm">
+              A bug-tracking web application called Cimex that I created to track my projects. By working on this project
+              I gained a thorough understanding of full stack web development, by designing a  relational database, 
+              a RESTful API, and a visually aesthetic front-end. I implemented tbe application with complete 
+              authorization/authentication functionality.
+            </p>
+            <a href="https://github.com/GuusLammers/BugTracker-Flask-WebApp" target="_blank"><i class="fab fa-github py-0.5" style="font-size:30px" title="Repository"></i></a>
+          </div>
+
+          <div class="py-1"></div>
+
+          <div id="project1" class="border px-4 py-2 rounded-lg">
+            <h1 class="font-space-mono text-xl uppercase tracking-widest">2048</h1>
+            <h1 class="font-space-mono text-md uppercase tracking-widest">Developed Using Java</h1>
+            <p class="font-space-mono text-sm">
+              A simple implementation of the popular game 2048 implemented using the MVC design pattern.
+              Working on this project allowed me to refine my skills using OOP, the MVC design pattern, and Java Swing components 
+              and event systems. By implementing this project using the MVC design pattern, I was able to decouple the view from the model, 
+              improving the code's organization and readability.
+            </p>
+            <a href="https://github.com/GuusLammers/2048" target="_blank"><i class="fab fa-github py-0.5" style="font-size:30px" title="Repository"></i></a>
+          </div>
+
+          <div class="py-1"></div>
+
+          <div id="project1" class="border px-4 py-2 rounded-lg">
+            <h1 class="font-space-mono text-xl uppercase tracking-widest">Snake</h1>
+            <h1 class="font-space-mono text-md uppercase tracking-widest">Developed Using Java</h1>
+            <p class="font-space-mono text-sm">
+              A simple snake game implemented using the MVC design pattern. Working on this project allowed me 
+              to refine my skills using OOP, the MVC design pattern, and Java Swing components and event systems. 
+              By implementing this project using the MVC design pattern, I was able to decouple the view from the model, 
+              improving the code's organization and readability.
+            </p>
+            <a href="https://github.com/GuusLammers/Snake" target="_blank"><i class="fab fa-github py-0.5" style="font-size:30px" title="Repository"></i></a>
+          </div>
+
+          <div class="py-1"></div>
+
+          <div id="project1" class="border px-4 py-2 rounded-lg">
+            <h1 class="font-space-mono text-xl uppercase tracking-widest">Spiral Sort</h1>
+            <h1 class="font-space-mono text-md uppercase tracking-widest">Developed Using Python</h1>
+            <p class="font-space-mono text-sm">
+              A sorting algorithm visualizer implemented using Pygame that scatters and reconstructs a spiral. 
+              The visualizer implements visualizations for selection sort, merge sort,
+              quick sort, insertion sort, cocktail sort, bubble sort, shell sort, and comb sort. Working on this project allowed me to refine my 
+              skills using Pygame and my knowledge of sorting algorithms.
+            </p>
+            <a href="https://github.com/GuusLammers/Spiral-Sort" target="_blank"><i class="fab fa-github py-0.5" style="font-size:30px" title="Repository"></i></a>
+          </div>
+
+          <div class="py-1"></div>
+
+          <div id="project1" class="border px-4 py-2 rounded-lg">
+            <h1 class="font-space-mono text-xl uppercase tracking-widest">Flappy Bird Clone</h1>
+            <h1 class="font-space-mono text-md uppercase tracking-widest">Developed Using Python</h1>
+            <p class="font-space-mono text-sm">
+              A clone of the popular game Flappy Bird implemented using Pygame. Working on this project introduced
+              me to simple 2D game development using Pygame. 
+            </p>
+            <a href="https://github.com/GuusLammers/Flappy-Bird-Clone" target="_blank"><i class="fab fa-github py-0.5" style="font-size:30px" title="Repository"></i></a>
+          </div>
+
+          <div class="py-1"></div>
+
+          <div id="project1" class="border px-4 py-2 rounded-lg">
+            <h1 class="font-space-mono text-xl uppercase tracking-widest">My Data Structure Libraries</h1>
+            <h1 class="font-space-mono text-md uppercase tracking-widest">Developed Using Python</h1>
+            <p class="font-space-mono text-sm">
+              Simple implementations of the following data structures: node, linked list, tree, queue, stack.
+              These data structure implementations were used in some of my other projects. Working on this project
+              refined my knowledge of the data structure listed above.
+            </p>
+            <a href="https://github.com/GuusLammers/My-Data-Structure-Libraries" target="_blank"><i class="fab fa-github py-0.5" style="font-size:30px" title="Repository"></i></a>
+          </div>
+
+          <div class="py-1"></div>
+
+          <div id="project1" class="border px-4 py-2 rounded-lg">
+            <h1 class="font-space-mono text-xl uppercase tracking-widest">Sudoku GUI</h1>
+            <h1 class="font-space-mono text-md uppercase tracking-widest">Developed Using Python</h1>
+            <p class="font-space-mono text-sm">
+              A simple sudoku game implemented using Tkinter. The game can be solved by the user or with the implemented
+              recursive back tracking algorithm.
+            </p>
+            <a href="https://github.com/GuusLammers/GUI-Sudoku-Solver" target="_blank"><i class="fab fa-github py-0.5" style="font-size:30px" title="Repository"></i></a>
+          </div>
+
+          <div class="py-1"></div>
+
+          <div id="project1" class="border px-4 py-2 rounded-lg">
+            <h1 class="font-space-mono text-xl uppercase tracking-widest">Blackjack GUI</h1>
+            <h1 class="font-space-mono text-md uppercase tracking-widest">Developed Using Python</h1>
+            <p class="font-space-mono text-sm">
+              A simple blackjack game implemented using Tkinter.
+            </p>
+            <a href="https://github.com/GuusLammers/GUI-Blackjack" target="_blank"><i class="fab fa-github py-0.5" style="font-size:30px" title="Repository"></i></a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

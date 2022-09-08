@@ -1,5 +1,4 @@
 import * as THREE from 'https://unpkg.com/three@0.129.0/build/three.module.js';
-import { gsap } from "http://mywebsite.com/static/gsap.min.js";
 
 const world = {
 	plane: {
